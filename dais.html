@@ -1,0 +1,256 @@
+<html>
+<head>
+  <title>Dove Atelier - Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2e9dc;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+
+    .top-buttons {
+      margin: 40px 0 30px;
+    }
+
+    .top-buttons a {
+      background-color: #8B0000;
+      color: white;
+      padding: 12px 30px;
+      margin: 10px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* --- Uniform row styling --- */
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0 auto 60px;
+      flex-wrap: wrap;              /* Keeps it usable on small screens */
+      max-width: 1200px;            /* Tweak as desired */
+      padding: 0 20px;
+    }
+
+    /* Optional: tighten vertical gap on last row */
+    .row.last {
+      margin-bottom: 40px;
+    }
+
+    .image-box {
+      width: 250px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .image-box img:hover {
+      transform: scale(1.03);
+    }
+
+    .image-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .image-price {
+      color: #28a745;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    .image-box button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .image-box button:hover {
+      background-color: #a80000;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top navigation buttons -->
+  <div class="top-buttons">
+    <a href="home.html">HOME</a>
+    <a href="dais.html">WEDDING</a>
+    <a href="attire.html">ATTIRE</a>
+    <a href="table.html">TABLE DECO</a>
+    <a href="cart.html">CART</a>
+  </div>
+
+ 
+  <div class="row">
+    <div class="image-box">
+      <img src="stage/stage1.png" alt="The White Promise" onclick="openLightbox(this.src)">
+      <div class="image-name">The White Promise</div>
+      <div class="image-price">RM 1500</div>
+      <button onclick="addToCart('The White Promise', 'stage/stage1.png', 1500)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage3.jpg" alt="Eternal Rose" onclick="openLightbox(this.src)">
+      <div class="image-name">Eternal Rose</div>
+      <div class="image-price">RM 3200</div>
+      <button onclick="addToCart('Eternal Rose', 'stage/stage3.jpg', 3200)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage4.png" alt="Lily Luxe" onclick="openLightbox(this.src)">
+      <div class="image-name">Lily Luxe</div>
+      <div class="image-price">RM 2700</div>
+      <button onclick="addToCart('Lily Luxe', 'stage/stage4.png', 2700)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage5.png" alt="Golden Aura" onclick="openLightbox(this.src)">
+      <div class="image-name">Golden Aura</div>
+      <div class="image-price">RM 4100</div>
+      <button onclick="addToCart('Golden Aura', 'stage/stage5.png', 4100)">Add to Cart</button>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="image-box">
+      <img src="stage/stage6.png" alt="Blossom Crown" onclick="openLightbox(this.src)">
+      <div class="image-name">Blossom Crown</div>
+      <div class="image-price">RM 1800</div>
+      <button onclick="addToCart('Blossom Crown', 'stage/stage6.png', 1800)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage9.png" alt="Ivory Romance" onclick="openLightbox(this.src)">
+      <div class="image-name">Ivory Romance</div>
+      <div class="image-price">RM 3500</div>
+      <button onclick="addToCart('Ivory Romance', 'stage/stage9.png', 3500)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage12.png" alt="Velvet Garden" onclick="openLightbox(this.src)">
+      <div class="image-name">Velvet Garden</div>
+      <div class="image-price">RM 2200</div>
+      <button onclick="addToCart('Velvet Garden', 'stage/stage12.png', 2200)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage13.png" alt="The White Doves" onclick="openLightbox(this.src)">
+      <div class="image-name">The White Doves</div>
+      <div class="image-price">RM 3000</div>
+      <button onclick="addToCart('The White Doves', 'stage/stage13.png', 3000)">Add to Cart</button>
+    </div>
+  </div>
+
+  
+  <div class="row last">
+    <div class="image-box">
+      <img src="stage/stage10.png" alt="Classic Bloom" onclick="openLightbox(this.src)">
+      <div class="image-name">Classic Bloom</div>
+      <div class="image-price">RM 2000</div>
+      <button onclick="addToCart('Classic Bloom', 'stage/stage10.png', 2000)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage11.png" alt="Celestial Petals" onclick="openLightbox(this.src)">
+      <div class="image-name">Celestial Petals</div>
+      <div class="image-price">RM 3900</div>
+      <button onclick="addToCart('Celestial Petals', 'stage/stage11.png', 3900)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="stage/stage12.jpg" alt="Celestial" onclick="openLightbox(this.src)">
+      <div class="image-name">Celestial</div>
+      <div class="image-price">RM 3900</div>
+      <button onclick="addToCart('Celestial', 'stage/stage12.jpg', 3900)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function openLightbox(src) {
+      const img = document.getElementById("lightbox-img");
+      img.src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function addToCart(name, image, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const index = cart.findIndex(item => item.name === name);
+      if (index > -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push({ name, image, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(name + " has been added to your cart.");
+    }
+  </script>
+
+  <footer style="background-color:#8B0000; color:white; text-align:center; padding:15px; font-family: 'Playfair Display', serif;">
+    &copy; 2025 Dove Atelier. All rights reserved.
+  </footer>
+
+</body>
+</html>

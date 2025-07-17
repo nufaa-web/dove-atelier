@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Checkout - Dove Atelier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f6f6;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .left, .right {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+
+    h2, h3 {
+      margin-top: 0;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .btn {
+      background: #8B0000;
+      color: white;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #a30000;
+    }
+
+    .remove-btn {
+      background: #ccc;
+      color: #333;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .remove-btn:hover {
+      background: #999;
+    }
+
+    .add-more {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #8B0000;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .summary {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .summary p {
+      margin: 8px 0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <h2>Booking Information</h2>
+      <form id="bookingForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+
+        <h2>Shipping Address</h2>
+        <input type="text" id="address" placeholder="Address" required>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="postcode" placeholder="Postcode" required>
+        <select id="state" required>
+          <option value="">-- Select State --</option>
+          <option>Johor</option>
+          <option>Kedah</option>
+          <option>Kelantan</option>
+          <option>Melaka</option>
+          <option>Negeri Sembilan</option>
+          <option>Pahang</option>
+          <option>Pulau Pinang</option>
+          <option>Perak</option>
+          <option>Perlis</option>
+          <option>Sabah</option>
+          <option>Sarawak</option>
+          <option>Selangor</option>
+          <option>Terengganu</option>
+        </select>
+
+        <button class="btn" type="submit">Confirm Booking</button>
+      </form>
+    </div>
+
+    <div class="right">
+      <div class="summary">
+        <h3>Your Booking Summary</h3>
+        <div id="orderSummary">
+          <p>Selected items will appear here.</p>
+        </div>
+        <a href="attire.html" class="add-more">+ Add More Items</a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background-color:#8B0000; color:white; text-align:center; padding:15px; font-family: 'Playfair Display', serif;">
+    &copy; 2025 Dove Atelier. All rights reserved.
+  </footer>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const summaryBox = document.getElementById('orderSummary');
+
+    function updateCartDisplay() {
+      let html = '';
+      let total = 0;
+
+      if (cart.length > 0) {
+        cart.forEach((item, index) => {
+          html += `
+            <p>
+              1x ${item.name} - RM ${item.price}
+              <button class="remove-btn" onclick="removeItem(${index})">❌ Remove</button>
+            </p>
+          `;
+          total += item.price;
+        });
+        html += `<hr><p><strong>Total: RM ${total}</strong></p>`;
+      } else {
+        html = "<p>No items selected.</p>";
+      }
+
+      summaryBox.innerHTML = html;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    updateCartDisplay();
+
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const customer = {
+        fullName: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        postcode: document.getElementById("postcode").value.trim(),
+        state: document.getElementById("state").value
+      };
+
+      localStorage.setItem("customer", JSON.stringify(customer));
+      window.location.href = "thanks.html";
+    });
+  </script>
+
+</body>
+</html>

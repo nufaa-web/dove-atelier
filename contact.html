@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Dove Atelier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e8dfd6;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      color: #8B0000;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #777;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    button {
+      background-color: #8B0000;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a30000;
+    }
+
+    /* Back to Home button */
+    .btn-back-home-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .btn-back-home {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #8B0000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn-back-home:hover {
+      background-color: #a30000;
+    }
+
+    .info {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .info p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    footer {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-family: 'Playfair Display', serif;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .btn-back-home {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="subtitle">We’d love to hear from you. Please fill out the form below or reach us directly.</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <input type="tel" id="phone" placeholder="Your Phone Number" />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Centered Back to Home button -->
+    <div class="btn-back-home-container">
+      <a href="home.html" class="btn-back-home">Back to Home</a>
+    </div>
+
+    <div class="info">
+      <p><strong>Email:</strong> doveatelier@gmail.com</p>
+      <p><strong>Phone:</strong> +60 12-3456789</p>
+      <p><strong>Address:</strong> Kuching, Malaysia</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Dove Atelier. All rights reserved.
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      alert("Thank you, " + name + "! Your email has been sent.");
+      document.querySelector("form").reset();
+    }
+  </script>
+
+</body>
+</html>

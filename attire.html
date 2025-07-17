@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dove Atelier - Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2e9dc;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 36px;
+    }
+
+    .top-buttons {
+      margin: 40px 0 30px;
+    }
+
+    .top-buttons a {
+      background-color: #8B0000;
+      color: white;
+      padding: 12px 30px;
+      margin: 10px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 40px 60px;
+      justify-items: center;
+    }
+
+    .center-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0 40px 60px;
+      flex-wrap: wrap;
+    }
+
+    .image-box {
+      width: 250px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .image-box img:hover {
+      transform: scale(1.03);
+    }
+
+    .image-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .image-price {
+      color: #28a745;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    .image-box button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .image-box button:hover {
+      background-color: #a80000;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top navigation buttons -->
+  <div class="top-buttons">
+    <a href="home.html">HOME</a>
+    <a href="dais.html">WEDDING</a>
+    <a href="attire.html">ATTIRE</a>
+    <a href="table.html">TABLE DECO</a>
+    <a href="cart.html">CART</a>
+  </div>
+
+  <!-- Page Title -->
+  <h1>Choose Your Wedding Attire</h1>
+
+  <!-- Gallery -->
+  <div class="gallery">
+
+    <div class="image-box">
+      <img src="attire/bride.png" alt="The White Promise" onclick="openLightbox(this.src)">
+      <div class="image-name">The White Promise</div>
+      <div class="image-price">RM 800</div>
+      <button onclick="addToCart('The White Promise', 'attire/bride.png', 800)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/brideA.png" alt="Doves" onclick="openLightbox(this.src)">
+      <div class="image-name">Doves</div>
+      <div class="image-price">RM 1050</div>
+      <button onclick="addToCart('Doves', 'attire/brideA.png', 1050)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/brideB.png" alt="Aurelia" onclick="openLightbox(this.src)">
+      <div class="image-name">Aurelia</div>
+      <div class="image-price">RM 1150</div>
+      <button onclick="addToCart('Aurelia', 'attire/brideB.png', 1150)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/brideC.png" alt="Serena" onclick="openLightbox(this.src)">
+      <div class="image-name">Serena</div>
+      <div class="image-price">RM 1250</div>
+      <button onclick="addToCart('Serena', 'attire/brideC.png', 1250)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/brideD.png" alt="Luna Veil" onclick="openLightbox(this.src)">
+      <div class="image-name">Luna Veil</div>
+      <div class="image-price">RM 1150</div>
+      <button onclick="addToCart('Luna Veil', 'attire/brideD.png', 1150)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/set1.png" alt="Bulan Kasih" onclick="openLightbox(this.src)">
+      <div class="image-name">Bulan Kasih</div>
+      <div class="image-price">RM 1150</div>
+      <button onclick="addToCart('Bulan Kasih', 'attire/set1.png', 1150)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/set2.png" alt="Myraja" onclick="openLightbox(this.src)">
+      <div class="image-name">Myraja</div>
+      <div class="image-price">RM 1650</div>
+      <button onclick="addToCart('Myraja', 'attire/set2.png', 1650)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/set3.png" alt="Dwi Cinta" onclick="openLightbox(this.src)">
+      <div class="image-name">Dwi Cinta</div>
+      <div class="image-price">RM 1900</div>
+      <button onclick="addToCart('Dwi Cinta', 'attire/set3.png', 1900)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/set4.png" alt="Issa Rae" onclick="openLightbox(this.src)">
+      <div class="image-name">Issa Rae</div>
+      <div class="image-price">RM 1500</div>
+      <button onclick="addToCart('Issa Rae', 'attire/set4.png', 1500)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/suit1.png" alt="Obsidian Oath" onclick="openLightbox(this.src)">
+      <div class="image-name">Obsidian Oath</div>
+      <div class="image-price">RM 1150</div>
+      <button onclick="addToCart('Obsidian Oath', 'attire/suit1.png', 1150)">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <!-- Centered Last Two Items -->
+  <div class="center-row">
+    <div class="image-box">
+      <img src="attire/suit2.png" alt="Noir Oath" onclick="openLightbox(this.src)">
+      <div class="image-name">Noir Oath</div>
+      <div class="image-price">RM 850</div>
+      <button onclick="addToCart('Noir Oath', 'attire/suit2.png', 850)">Add to Cart</button>
+    </div>
+
+    <div class="image-box">
+      <img src="attire/suit3.png" alt="Dune Whisper" onclick="openLightbox(this.src)">
+      <div class="image-name">Dune Whisper</div>
+      <div class="image-price">RM 750</div>
+      <button onclick="addToCart('Dune Whisper', 'attire/suit3.png', 750)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function addToCart(name, image, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const index = cart.findIndex(item => item.name === name);
+      if (index > -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push({ name, image, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(name + " has been added to your cart.");
+    }
+  </script>
+
+  <footer style="background-color:#8B0000; color:white; text-align:center; padding:15px; font-family: 'Playfair Display', serif;">
+    &copy; 2025 Dove Atelier. All rights reserved.
+  </footer>
+
+</body>
+</html>
